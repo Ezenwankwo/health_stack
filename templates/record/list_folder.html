@@ -1,0 +1,23 @@
+{% extends "record/base.html" %}
+
+{% block title %}Health Stack | Records{% endblock %}
+
+
+{% block content %}
+<div class="row px-3">
+  <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col"></th>
+      <th scope="col">Date</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for folder in folder_list %}
+    {% include 'record/item_folder.html' with folder=folder %}
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "registration/base.html" %}
+{% load static %}
+
+{% block title %}Health Stack | Permission Denied{% endblock %}
+
+
+{% block content %}
+<div class="card mx-auto mt-5 p-xs-0 p-md-1 shadow border-0" style="width: 20rem;">
+    <img src="{% static 'img/logo.png' %}" alt="logo" height="50%" width="50%" class="mx-auto py-5 d-block">
+    <div class="card-body pb-5">
+    <p class="lead">You should <a href="#"class="text-primary">upgrade</a> to family plan to create more folders</p>
+    </div>
+</div>
+{% endblock %}

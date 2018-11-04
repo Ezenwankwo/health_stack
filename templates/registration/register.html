@@ -1,0 +1,38 @@
+{% extends "registration/base.html" %}
+{% load static widget_tweaks %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+<div class="card mx-auto mt-5 p-xs-0 p-md-2 border-0 shadow" style="width: 20rem;">
+  <img src="{% static 'img/logo.png' %}" alt="logo" height="50%" width="50%" class="mx-auto pt-5 d-block">
+  <div class="card-body">
+    <p class="card-title mb-2 lead text-dark">Please register, it takes just 2mins</p>
+    <form action="." method="post" novalidate>
+      {% csrf_token %}
+
+      {% for hidden in form.hidden_fields %}
+        {{ hidden }}
+      {% endfor %}
+
+      {% for field in form.visible_fields %}
+        <div class="form-group">
+          <label class="text-dark" for="{{ field.id_for_label }}">{{ field.label }}</label>
+          {{ field|add_class:"form-control form-control-sm" }}
+          {% for error in field.errors %}
+            <small><p class="text-danger">{{ error }}</p></small>
+          {% endfor %}
+        </div>
+      {% endfor %}
+
+      <div class="form-group">
+        <button class="btn btn-sm btn-primary btn-block rounded-0 border-0 shadow" type="submit">
+          Create my account
+        </button>
+      </div>
+    </form>
+
+ </div>
+</div>
+
+  {% endblock %}

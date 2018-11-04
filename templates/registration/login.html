@@ -1,0 +1,47 @@
+{% extends "registration/base.html" %}
+{% load widget_tweaks %}
+
+{% block title %}Log-in{% endblock %}
+{% load static %}
+
+{% block content %}
+<div class="card mx-auto mt-5 border shadow" style="width: 20rem">
+    <img src="{% static 'img/logo.png' %}" alt="logo" height="50%" width="50%" class="mx-auto pt-5 d-block">
+    <div class="card-body">
+    <p class="card-title mx-auto lead text-dark">Please login to access your health records</p>
+    <form action="{% url 'login' %}" method="post" novalidate>
+      {% csrf_token %}
+
+      {% for hidden in form.hidden_fields %}
+        {{ hidden }}
+      {% endfor %}
+
+      {% if form.non_field_errors %}
+        <div class="alert alert-danger">
+          {% for error in form.non_field_errors %}
+            <small><p{% if forloop.last %} class="mb-0"{% endif %}>{{ error }}</p></small>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      {% for field in form.visible_fields %}
+        <div class="form-group">
+          <label class="text-dark" for="{{ field.id_for_label }}">{{ field.label }}</label>
+          {{ field|add_class:"form-control form-control-sm" }}
+          {% for error in field.errors %}
+            <small><p class="text-danger">{{ error }}</p></small>
+          {% endfor %}
+        </div>
+     {% endfor %}
+
+      <div class="form-group">
+        <button class="btn btn-primary btn-block rounded-0 border-0 shadow" type="submit">
+          Log-in
+        </button>
+        <small><a class="form-text text-primary" href="{% url "password_reset" %}">Forgot password?</a></small>
+      </div>
+    </form>
+ </div>
+</div>
+
+{% endblock %}

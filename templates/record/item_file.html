@@ -1,0 +1,39 @@
+{% load static %}
+
+
+<tr>
+  <td colspan="2">
+    <ul class="list-inline">
+     <li class="list-inline-item text-primary">
+       <a href="{{ file.file.url }}">
+       <i class="far fa-file" style="font-size: 25px;"></i>
+       </a>
+     </li>
+     <li class="list-inline-item">
+      <a href="{{ file.file.url }}">{{ file.hospital_name|capfirst }}</a>
+     </li>
+   </ul>
+  </td>
+  <td>
+    <p>{{ file.created|date:"D d M Y" }}</p>
+  </td>
+  <td>
+    <ul class="list-inline">
+      <li class="list-inline-item">
+        <a href="#">
+          <i class="fas fa-share-alt float-right" aria-hidden="true" title="click to share this record"></i>
+        </a>
+      </li>
+     <li class="list-inline-item">
+       <a href="{% url 'update_file' file.slug %}">
+         <i class="fas fa-edit float-right" aria-hidden="true" title="click to edit this record"></i>
+       </a>
+     </li>
+     <li class="list-inline-item">
+       <a href="{% url 'delete_file' file.slug %}">
+         <i class="fas fa-trash-alt float-right" aria-hidden="true" title="click to delete this record"></i>
+       </a>
+     </li>
+   </ul>
+  </td>
+</tr>

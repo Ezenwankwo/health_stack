@@ -1,0 +1,22 @@
+{% extends "record/base.html" %}
+
+{% block title %}Health Stack | Records{% endblock %}
+
+
+{% block content %}
+<div class="row px-3">
+  <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Hospital</th>
+      <th scope="col">Date</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for file in folder.file_set.all %}
+    {% include 'record/item_file.html' with file=file %}
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

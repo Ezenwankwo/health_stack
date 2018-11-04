@@ -1,0 +1,30 @@
+{% extends "registration/base.html" %}
+{% load static %}
+
+{% block title %}Health Stack | Choose Plan{% endblock %}
+
+{% block content %}
+<div class="card mx-auto my-2 p-xs-0 p-md-1 border-0 shadow" style="width: 20rem;">
+    <img src="{% static 'img/logo.png' %}" alt="logo" height="50%" width="50%" class="mx-auto pt-5 d-block">
+    <div class="card-body">
+    <p class='lead'>Choose plan</p>
+    <div class="card mb-2">
+          <div class="card-body">
+            <h3 class="card-title text-center"><span class="ion ion-ios-person-outline"></h3>
+            <h6 class="text-center">Personal</h6>
+            <hr>
+            <p class="card-price text-center lead">$10<span class="period">/year</span></p>
+            <a href="{% url 'personal_plan' %}" class="btn btn-block btn-primary border-0 shadow rounded-0">pay</a>
+        </div>
+    </div>
+    <div class="card">
+          <div class="card-body">
+            <h3 class="card-title text-center"><span class="ion ion-ios-people-outline"></h3>
+              <h6 class="text-center">Family</h6>
+              <hr>
+              <p class="card-price text-center lead">$20<span class="period">/year</span></p>
+            <a href="{% url 'family_plan' %}" class="btn btn-block btn-primary border-0 shadow rounded-0">pay</a>
+          </div>
+    </div>
+</div>
+{% endblock %}

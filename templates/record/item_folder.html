@@ -1,0 +1,34 @@
+{% load static %}
+
+
+<tr>
+  <td colspan="2">
+    <ul class="list-inline">
+     <li class="list-inline-item text-primary">
+       <a href="{{ folder.get_absolute_url }}">
+       <i class="far fa-folder" style="font-size: 25px;"></i>
+       </a>
+     </li>
+     <li class="list-inline-item">
+      <a href="{{ folder.get_absolute_url }}">{{ folder.full_name|capfirst }}</a>
+     </li>
+   </ul>
+  </td>
+  <td>
+    <p>{{ folder.created|date:"D d M Y" }}</p>
+  </td>
+  <td>
+    <ul class="list-inline">
+     <li class="list-inline-item">
+       <a href="{% url 'update_folder' folder.slug %}">
+         <i class="fas fa-edit float-right" aria-hidden="true" title="click to edit this record"></i>
+       </a>
+     </li>
+     <li class="list-inline-item">
+       <a href="{% url 'delete_folder' folder.slug %}">
+         <i class="fas fa-trash-alt float-right" aria-hidden="true" title="click to delete this record"></i>
+       </a>
+     </li>
+   </ul>
+  </td>
+</tr>

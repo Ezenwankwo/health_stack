@@ -1,0 +1,36 @@
+{% extends "record/base.html" %}
+{% load static widget_tweaks %}
+
+{% block title %}Health Stack | Upload File{% endblock %}
+
+{% block content %}
+<div class="card mx-auto p-xs-0 p-md-2 border-0">
+  <div class="card-body">
+    <p class="card-title mb-2 lead text-dark">Upload File</p>
+    <form action="." method="post" enctype="multipart/form-data" novalidate>
+      {% csrf_token %}
+
+      {% for hidden in form.hidden_fields %}
+        {{ hidden }}
+      {% endfor %}
+
+      {% for field in form.visible_fields %}
+        <div class="form-group">
+          <label class="text-dark" for="{{ field.id_for_label }}">{{ field.label }}</label>
+          {{ field|add_class:"form-control form-control-sm" }}
+          {% for error in field.errors %}
+            <small><p class="text-danger">{{ error }}</p></small>
+          {% endfor %}
+        </div>
+      {% endfor %}
+
+      <div class="form-group">
+        <button class="btn btn-sm btn-primary rounded-0 border-0 shadow" type="submit">
+          save
+        </button>
+      </div>
+    </form>
+
+ </div>
+</div>
+{% endblock %}

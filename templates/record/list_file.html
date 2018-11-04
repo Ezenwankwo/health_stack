@@ -1,0 +1,31 @@
+{% extends "record/base.html" %}
+
+{% block title %}Health Stack | Records{% endblock %}
+
+
+{% block content %}
+<div class="row px-3">
+  {% if file_list %}
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Hospital</th>
+        <th scope="col"></th>
+        <th scope="col">Date</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for file in file_list %}
+      {% include 'record/item_file.html' with file=file %}
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="lead">
+    No files!<br>
+    <a href="{% url 'create_folder' %}" class="text-primary">Create</a> your folder, then click on the upload button at the top of this page to upload files
+  </p>
+  {% endif %}
+</div>
+{% endblock %}

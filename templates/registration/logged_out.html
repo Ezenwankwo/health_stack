@@ -1,0 +1,14 @@
+{% extends "registration/base.html" %}
+{% load static %}
+
+{% block title %}Logged out{% endblock %}
+
+{% block content %}
+<div class="card border-0 mx-auto" style="width: 30rem;">
+  <div class="card-body">
+    <img src="{% static 'img/logo.png' %}" alt="logo" height="75%" width="75%" class="mx-auto d-block">
+    <p class="lead">You have been successfully logged out.</p>
+    <a class="btn btn-primary border-0 shadow rounded-0" href="{% url "login" %}">Log-in</a>
+  </div>
+</div>
+{% endblock %}

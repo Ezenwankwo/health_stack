@@ -1,0 +1,16 @@
+{% extends "record/base.html" %}
+
+{% block title %}Health Stack | Delete File{% endblock %}
+
+
+{% block content %}
+<div class="card my-5 p-xs-0 p-md-2 border-0">
+  <div class="card-body">
+    <p class="lead mb-4">Delete File</p>
+    <form method="post">{% csrf_token %}
+    <p>Are you sure you want to delete this folder for <strong>"{{ folder.full_name }}"?</strong></p>
+    <input class="btn btn-danger shadow border-0 rounded-0" type="submit" value="Confirm Delete" />
+    </form>
+  </div>
+</div>
+{% endblock %}
